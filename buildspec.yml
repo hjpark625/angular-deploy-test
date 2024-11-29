@@ -4,17 +4,17 @@ phases:
   install:
     runtime-versions:
       nodejs: 18
-    pre_build:
-      commands:
-        - aws --version
-        - node --version
-        - yarn --version
-        - aws s3 cp $DEVOPS_URI/.env ./
-        - yarn install
-    build:
-      commands:
-        - yarn build
-    post_build:
-      commands:
-        - aws s3 cp $CODEBUILD_SRC_DIR/dist $DEPLOY_TARGET_S3_URI --recursive
-        - aws cloudfront create-invalidation --distribution-id $DEPLOY_CLOUDFRONT_DIST_ID --paths '/index.html'
+  pre_build:
+    commands:
+      - aws --version
+      - node --version
+      - yarn --version
+      - aws s3 cp $DEVOPS_URI/.env ./
+      - yarn install
+  build:
+    commands:
+      - yarn build
+  post_build:
+    commands:
+      - aws s3 cp $CODEBUILD_SRC_DIR/dist $DEPLOY_TARGET_S3_URI --recursive
+      - aws cloudfront create-invalidation --distribution-id $DEPLOY_CLOUDFRONT_DIST_ID --paths '/index.html'
