@@ -9,6 +9,10 @@ phases:
       - aws --version
       - node --version
       - yarn --version
+      - echo "Current directory:",
+      - pwd
+      - echo "List files in current directory:",
+      - ls -al
       - aws s3 cp $DEVOPS_URI/.env ./
       - yarn install
   build:
