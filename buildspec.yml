@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      node: 18
+    pre_build:
+      commands:
+        - aws --version
+        - node --version
+        - yarn --version
+        - aws s3 cp $DEVOPS_URI/.env ./
+        - yarn install
+    build:
+      commands:
+        - yarn build
+    post_build:
+      commands:
+        - aws s3 sync $CODEBUILD_SRC_DIR/dist $DEPLOY_TARGET_S3_URI --delete
+        - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
