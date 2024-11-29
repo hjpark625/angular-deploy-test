@@ -17,6 +17,7 @@ phases:
       - yarn install
   build:
     commands:
+      - export PROJECT_ROOT=$CODEBUILD_SRC_DIR
       - yarn build
   post_build:
     commands:
