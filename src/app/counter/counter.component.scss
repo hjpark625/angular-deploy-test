@@ -1,0 +1,41 @@
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .counter-title {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .counter-indicator {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+    .button {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      &.increase-button {
+        background-color: #28a745;
+        color: #fff;
+      }
+
+      &.decrease-button {
+        background-color: #dc3545;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div class="counter-wrapper">
+  {{ testValue }}
+  <h1 class="counter-title">Counter</h1>
+  <p class="counter-indicator">Current count: {{ count }}</p>
+  <div class="button-wrapper">
+    <button class="button increase-button" type="button" (click)="increment()">Increment</button>
+    <button class="button decrease-button" type="button" (click)="decrement()">Decrement</button>
+  </div>
+</div>
