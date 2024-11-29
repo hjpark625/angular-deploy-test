@@ -16,5 +16,5 @@ phases:
         - yarn build
     post_build:
       commands:
-        - aws s3 sync $CODEBUILD_SRC_DIR/dist $DEPLOY_TARGET_S3_URI --delete
-        - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
+        - aws s3 cp $CODEBUILD_SRC_DIR/dist $DEPLOY_TARGET_S3_URI --recursive
+        - aws cloudfront create-invalidation --distribution-id $DEPLOY_CLOUDFRONT_DIST_ID --paths '/index.html'
